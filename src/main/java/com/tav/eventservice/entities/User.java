@@ -21,8 +21,7 @@ public class User {
     private String email;
 
     @Column(name = "password", nullable = false)
-    private String password;
-
+    private int password;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH })
     @JoinTable(

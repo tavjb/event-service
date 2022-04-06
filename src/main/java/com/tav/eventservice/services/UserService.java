@@ -1,6 +1,7 @@
 package com.tav.eventservice.services;
 
 import com.tav.eventservice.dto.EventDto;
+import com.tav.eventservice.dto.UserDto;
 import com.tav.eventservice.entities.Event;
 import com.tav.eventservice.entities.User;
 import com.tav.eventservice.repositories.EventRepository;
@@ -17,8 +18,9 @@ public class UserService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
 
-    public User createUser(final User user) {
-        return userRepository.save(user);
+    public UserDto createUser(final UserDto userDto) {
+        final User user = ObjectMappingUtil.userDtoToEntity(userDto);
+        return ObjectMappingUtil.userEntityToDto(userRepository.save(user));
     }
 
     public EventDto attendEvent(final long userId, final long eventId) {

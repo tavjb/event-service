@@ -1,7 +1,9 @@
 package com.tav.eventservice.util;
 
 import com.tav.eventservice.dto.EventDto;
+import com.tav.eventservice.dto.UserDto;
 import com.tav.eventservice.entities.Event;
+import com.tav.eventservice.entities.User;
 
 public class ObjectMappingUtil {
     public static Event eventDtoToEntity(final EventDto eventDto) {
@@ -18,6 +20,20 @@ public class ObjectMappingUtil {
                 .title(event.getTitle())
                 .startDate(event.getStartDate())
                 .endDate(event.getEndDate())
+                .build();
+    }
+
+    public static User userDtoToEntity(final UserDto dto) {
+        return User.builder()
+                .email(dto.getEmail())
+                .password(dto.getPassword().hashCode())
+                .build();
+    }
+
+    public static UserDto userEntityToDto(final User user) {
+        return UserDto.builder()
+                .id(user.getId())
+                .email(user.getEmail())
                 .build();
     }
 }
