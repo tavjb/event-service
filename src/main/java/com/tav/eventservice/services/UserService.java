@@ -8,6 +8,7 @@ import com.tav.eventservice.repositories.EventRepository;
 import com.tav.eventservice.repositories.UserRepository;
 import com.tav.eventservice.util.ObjectMappingUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,7 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final EventRepository eventRepository;
 
-    public UserDto createUser(final UserDto userDto) {
+    public UserDto create(final UserDto userDto) {
         final User user = ObjectMappingUtil.userDtoToEntity(userDto);
         return ObjectMappingUtil.userEntityToDto(userRepository.save(user));
     }
@@ -41,5 +42,21 @@ public class UserService {
         final Event event = eventOpt.get();
         event.getUsers().add(userOpt.get());
         return ObjectMappingUtil.eventEntityToDto(eventRepository.save(event));
+    }
+
+    public UserDto get(final long id) {
+        Optional<User> userOpt = userRepository.findById(id);
+        if (userOpt.isEmpty()) {
+            return null;
+        }
+        return ObjectMappingUtil.userEntityToDto(userOpt.get());
+    }
+
+    public UserDto get(final String email) {
+        Optional<User> userOpt = userRepository.findByEmail(email);
+        if (userOpt.isEmpty()) {
+            return null;
+        }
+        return ObjectMappingUtil.userEntityToDto(userOpt.get());
     }
 }

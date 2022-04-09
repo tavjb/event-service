@@ -4,7 +4,13 @@ import com.tav.eventservice.dto.EventDto;
 import com.tav.eventservice.dto.UserDto;
 import com.tav.eventservice.entities.Event;
 import com.tav.eventservice.entities.User;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ObjectMappingUtil {
     public static Event eventDtoToEntity(final EventDto eventDto) {
         return Event.builder()
@@ -35,5 +41,13 @@ public class ObjectMappingUtil {
                 .id(user.getId())
                 .email(user.getEmail())
                 .build();
+    }
+
+    public static UserDetails userToSpringSecurityUser(final User user) {
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                String.valueOf(user.getPassword()),
+                new ArrayList<>()
+        );
     }
 }

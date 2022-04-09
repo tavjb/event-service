@@ -16,25 +16,7 @@ import java.time.LocalDate;
 public class EventServiceApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(EventServiceApplication.class, args);
-//		final EventRepository eventRepository = ctx.getBean(EventRepository.class);
-//
-//		eventRepository.save(event);
-//				Event event = Event.builder()
-//				.title("Tool concert")
-//				.startDate(LocalDate.of(2022, 5, 4))
-//				.endDate(LocalDate.of(2022, 5, 4));
-//
-		final UserService userService = ctx.getBean(UserService.class);
-
-//		userService.createUser(
-//			User.builder()
-//					.email("tav@gmail.com")
-//					.password("1234")
-//					.build()
-//		);
-
-		userService.attendEvent(1L, 1L);
+		SpringApplication.run(EventServiceApplication.class, args);
 
 	}
 

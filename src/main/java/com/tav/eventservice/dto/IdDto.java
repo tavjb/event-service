@@ -9,6 +9,6 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class IdWrapper {
+public class IdDto {
     private long id;
 }

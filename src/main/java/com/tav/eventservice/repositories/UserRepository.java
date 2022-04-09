@@ -5,9 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    boolean existsByEventsId(final long id);
-    List<User> getUsersByEventsId(final long id);
+    boolean existsByEventsId(long id);
+    List<User> getUsersByEventsId(long id);
+    Optional<User> findByEmail(String email);
 }
