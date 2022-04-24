@@ -14,11 +14,11 @@ public class Test implements CommandLineRunner {
     private final RestTemplate restTemplate;
 
     @Override
-    public void run(String... args) throws Exception {
-        final ResponseEntity<UserDto> res = restTemplate.exchange(
-                "http://localhost:8080/user/1", HttpMethod.GET, null, UserDto.class
-        );
-
-        System.out.println("Response body: " + res.getBody());
+    public void run(String... args) {
+//        final ResponseEntity<UserDto> res = restTemplate.exchange(
+//                "http://localhost:8080/user/1", HttpMethod.GET, null, UserDto.class
+//        );
+//
+//        System.out.println("Response body: " + res.getBody());
     }
 }

@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests().antMatchers("/authentication", "/user/*").permitAll()
+                .authorizeHttpRequests().antMatchers("/authentication", "/user", "/user/*").permitAll()
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Turns off the Spring Security session management (Makes it stateless)
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // Adds out filter to the filter chain

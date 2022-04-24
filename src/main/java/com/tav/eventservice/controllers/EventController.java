@@ -24,7 +24,9 @@ public class EventController {
         return eventService.updateEvent(event);
     }
 
-    public EventDto getEvent(@RequestParam final long id) {
+
+    @GetMapping("{id}")
+    public EventDto getEvent(@PathVariable final long id) {
         return eventService.getEvent(id);
     }
 }

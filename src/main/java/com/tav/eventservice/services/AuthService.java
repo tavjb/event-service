@@ -4,6 +4,7 @@ import com.tav.eventservice.dto.JwtDto;
 import com.tav.eventservice.dto.UserDto;
 import com.tav.eventservice.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
